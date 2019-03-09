@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+        
+        <img src="./gailun.jpg" alt=""><br>
+        <button><h1 id="header" onclick="getValue()" >标题</h1></button><br>
+        <p>点击标题会返回值</p>
+        <input type="text" name="myInput"><br>
+        <input type="text" name="myInput"><br>
+        <input type="text" name="myInput"><br>
+        <br>
+        <input type="button" value="name为myInput的元素有多少个" onclick="getElements()"><br>
+        <input type="button" value="打开一个新的文档" onclick="opennew()"><br>
+        <form id="form1" name="form1" >
+          您的姓名：<input type="text">
+        </form>
+        <form id="form2" name="form2">
+          您的汽车：<input type="text">
+        </form>
+        <p class="change"id="change">hello</p>
+        <div id="p1">hello world</div>
+        <div id="p2">hello world</div>
+        <div id="parents">父节点</div>
+        <button onclick="document.body.style.backgroundColor= 'red' " >改变背景颜色</button>
+        <button onclick=" document.getElementById('header').innerHTML='新标题' ">改变标题</button>
+        <button onclick="changeTitle()">改变标题三秒钟</button>
+   
+  <script>
+    document.write("<p>第一个表单名称是："+document.forms[0].name+" </p>")
+    document.write("<p>第二个表单名称是："+document.getElementById('form1').name+" </p>")
+    document.write("hello world!")  
+    document.write("<h1>hello world!</h1>")
+    document.write(document.title)
+    document.write("<h1>document.title</h1>")
+    document.write("该文档的URL是：")
+    document.write(document.URL)
+    document.write(document.domain)
+    document.getElementById('change').innerHTML="new hello"
+    document.getElementById('p1').style.color="blue";
+    document.getElementById('p1').style.fontStyle="italic"
+    document.getElementById('p1').style.fontWeight="bold"
+    function getValue(){
+      // var x = document.getElementById('header');
+      // alert(x.innerHTML);
+      alert(document.getElementById('header').innerHTML)
+    }
+    function getElements(){
+     alert(document.getElementsByName('myInput').length) 
+    }
+    function changeTitle(){
+      document.getElementById('header').innerHTML = "新标题"
+      setTimeout(() => {
+        document.getElementById('header').innerHTML = "标题"
+      }, 3000);
+    }
+   
+  </script>
+</body>
+</html>
