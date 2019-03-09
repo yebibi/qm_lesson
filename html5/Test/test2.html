@@ -31,6 +31,9 @@
         <button onclick="document.body.style.backgroundColor= 'red' " >改变背景颜色</button>
         <button onclick=" document.getElementById('header').innerHTML='新标题' ">改变标题</button>
         <button onclick="changeTitle()">改变标题三秒钟</button>
+        <button onclick="this.innerHTML='hello'" >点击</button>
+        <button id="cColor" onclick="changeColor()">点击变色</button>
+        <button id="cColor1" onclick="keepchangeColor()" >点击一直变色</button>
    
   <script>
     document.write("<p>第一个表单名称是："+document.forms[0].name+" </p>")
@@ -60,6 +63,59 @@
         document.getElementById('header').innerHTML = "标题"
       }, 3000);
     }
+    function changeColor(){
+        document.getElementById('cColor').style.backgroundColor="red"
+      setTimeout(() => {
+        document.getElementById('cColor').style.backgroundColor="yellow"
+      }, 1000);
+      function changeColor1(){
+        setTimeout(() => {
+          document.getElementById('cColor').style.backgroundColor="blue"
+        }, 2000);
+       
+      }
+      changeColor2();
+      function changeColor2(){
+        setTimeout(() => {
+          document.getElementById('cColor').style.backgroundColor="pink"
+        }, 3000);
+       
+      }
+      changeColor3();
+      function changeColor3(){
+        setTimeout(() => {
+          document.getElementById('cColor').style.backgroundColor="green"
+        }, 4000);
+       
+      }
+      changeColor3();
+      function changeColor4(){
+        setTimeout(() => {
+          document.getElementById('cColor').style.backgroundColor="black"
+        }, 5000);
+       
+      }
+      changeColor4();
+      function changeColor4(){
+        setTimeout(() => {
+          document.getElementById('cColor').style.backgroundColor="white"
+        }, 6000);
+       
+      }
+      changeColor4();
+     }
+     function keepchangeColor(){
+       document.getElementById('cColor1').style.backgroundColor="red"
+       setTimeout(() => {
+        document.getElementById('cColor1').style.backgroundColor="blue"
+       }, 500);
+     }
+     setInterval(keepchangeColor,1000);
+      
+     
+      
+    
+    
    
   </script>
 </body>
