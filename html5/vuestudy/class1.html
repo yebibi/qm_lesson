@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  
+  <div id="app">
+    <p v-cloak>{{msg}}</p>
+    <h1 v-text="msg"></h1>
+    <p v-html="msg2"></p>
+    <input type="button"  value="按钮" v-bind:title="mytitle"v-on:click="show">
+    <input type="button" value="按钮2" @mouseover="show">
+  </div> 
+  <script>
+    var vm  = new Vue({
+      el:"#app",
+      data:{
+        msg:"123",
+        msg2:'<h1>我是h1</h1>',
+        mytitle:'这是一个自己定义的title'
+      },
+      methods:{
+        show:function(){
+          alert('hello')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
