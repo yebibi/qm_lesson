@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-for="item in list">{{item.name}}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        list:[
+          {id:1,name:'yb'},
+          {id:2,name:'yebin'},
+          {id:3,name:'ybb'},
+          {id:4,name:'yebinbin'}
+        ]
+      }
+    })
+  </script>
+ 
+</body>
+</html>

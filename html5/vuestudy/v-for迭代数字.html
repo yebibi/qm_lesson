@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <p v-for="i in 10">这个是第{{i}}次循环</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+
+      }
+    })
+  </script>
+</body>
+</html>

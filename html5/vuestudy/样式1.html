@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <style>
+    .red{
+      color:red
+    }
+    .thin{
+      font-weight: 200
+    }
+    .italic{
+      font-style: italic
+    }
+    .active{
+      letter-spacing: 0.5em
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- <h1 class="red thin">这是h1，很大你懂吧</h1> -->
+    <!-- 第一种使用方式 -->
+    <h1 v-bind:class="['red']">这是h1，很大你懂吧</h1>
+    <!-- <h1 :class="['red','thin']">这是h1，很大你懂吧</h1> -->
+    <!-- 在数组里面用三元表达式 -->
+    <h1 :class="['red','thin',flag?'active':'']">这也是h1，也很大</h1>
+    <!-- 用对象代替三元表达式，提高代码的可读性 -->
+    <h1 :class="['red','thin',{'active':flag}]">这还是h1，依然很大</h1>
+    <!-- 直接使用对象 -->
+    <h1 :class="classObj">好烦啊</h1>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        flag:true,
+        classObj:{red:true,thin:true,active:true}
+      }
+    })
+  </script>
+</body>
+</html>
