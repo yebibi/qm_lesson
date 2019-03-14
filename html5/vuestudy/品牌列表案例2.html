@@ -19,11 +19,11 @@
           Id: <input type="text" v-model="id">
         </label>
         <label for="">
-          Name: <input type="text" v-model="name">
+          Name: <input type="text" v-model="name" @keyup.enter="add">
         </label>
         <input type="button" value="添加" class="btn-primary"@click="add">
         <label for="">
-          搜索关键字：<input type="text" v-model="keywords">
+          搜索关键字：<input type="text" v-model="keywords" v-focus v-color id="1">
         </label>
       </div> 
     </div>
@@ -40,13 +40,33 @@
         <tr v-for='item in search(keywords)' :key="item.id">
          <td>{{item.id}}</td>
          <td>{{item.name}}</td>
-         <td>{{item.ctime}}</td>
+         <td>{{item.ctime | newDate}}</td>
          <td><a href="" @click.prevent="del(item.id)" >删除</a></td>
         </tr>
       </tbody>
     </table>
   </div>
   <script>
+    Vue.filter('newDate',function(date){
+      var dt = new Date(date)
+      var y = dt.getFullYear()
+      var m = dt.getMonth()+1
+      var d = dt.getDate()
+      return `${y}-${m}-${d}`
+    })
+    Vue.directive('focus',{
+      inserted:function(el){
+        el.focus()
+      }
+    })
+  
+    Vue.directive('color',{
+      bind:function(el){
+        el.style.color="red";
+      }
+    })
+      
+    
     var vm = new Vue({
       el:'#app',
       data:{
@@ -89,11 +109,12 @@
         }
       })
       return newList
-     }
+     } 
         
       },
     
     })
+    // document.getElementById('1').style.color="red";
   </script>
 </body>
 </html>

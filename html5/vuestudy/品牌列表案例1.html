@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <div id="app">
+    <div>
+      <div>
+        <h3>添加品牌</h3>
+      </div>
+      <div class="form-inline">
+        <label for="">
+          Id: <input type="text" v-model="id">
+        </label>
+        <label for="">
+          Name: <input type="text" v-model="name">
+        </label>
+        <input type="button" value="添加" class="btn-primary"@click="add">
+        <label for="">
+          搜索关键字：<input type="text" v-model="keywords">
+        </label>
+      </div> 
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Ctime</th>
+          <th>Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for='item in search(keywords)' :key="item.id">
+         <td>{{item.id}}</td>
+         <td>{{item.name}}</td>
+         <td>{{item.ctime}}</td>
+         <td><a href="" @click.prevent="del(item.id)" >删除</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        id:'',
+        name:'',
+        keywords:'',
+        list:[
+          {id:1,name:'奔驰',ctime:new Date()},
+          {id:2,name:'宝马',ctime:new Date()}
+        ]
+      },
+      methods:{
+        add(){
+          this.list.push({id:this.id,name:this.name,ctime:new Date()})
+          this.id=this.name = ''
+        },
+        // delete(){
+        //   this.list.remove({id:this.id,name:this.name})
+        // }
+        del(id){
+        //   this.list.some((item,i) => {
+        //     if(item.id == id){
+        //       this.list.splice(i,1)
+        //       return true
+        //     }
+        //   })
+          var index = this.list.findIndex(item=>{
+            if(item.id== id){
+              return true
+            }
+           
+          })
+          this.list.splice(index,1)
+        },
+        search(keywords){
+      var newList=[]
+      this.list.forEach(item=>{
+        if(item.name.indexOf(keywords)!=-1){
+          newList.push(item)
+        }
+      })
+      return newList
+     } 
+        
+      },
+    
+    })
+  </script>
+</body>
+</html>
