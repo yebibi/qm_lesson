@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <style>
+    a{
+      text-decoration: none
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <a href="" @click.prevent="flag=true">登录</a>
+    <a href="" @click.prevent="flag=false">注册</a>
+    <login v-if="flag"></login>
+    <register v-else="flag"></register>
+  </div>
+  <template id="temp">
+    <div> 
+      <h3>登录组件</h3>
+      <label for="">
+        账号：
+        <input type="text" >
+      </label>
+      <br>
+      <label for="">
+         密码：
+          <input type="text" >
+        </label>
+        <br>
+        <input type="button" value="登录">
+      </div>
+       
+
+   
+  </template>
+  <template id="temp1">
+    <div>
+        <h3>注册组件</h3>
+      <label for="">
+        账号：
+        <input type="text" >
+      </label>
+      <br>
+      <label for="">
+         密码：
+          <input type="text" >
+        </label>
+        <br>
+        <input type="button" value="注册">
+    </div>
+    
+    </template>
+  <script>
+    Vue.component('login',{
+      template:'#temp'
+    })
+    Vue.component('register',{
+      template:'#temp1'
+    })
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        flag:false
+      },
+      methods:{}
+    })
+  </script>
+</body>
+</html>
