@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <div id="app">
+
+    <com-box @func="loadComments"></com-box>
+    <ul>
+      <li v-for="item in list" :key="item.id">  
+        <span>
+          评论人：{{item.name}}
+        </span>
+        {{item.content}}
+      </li>
+    </ul>
+  </div>
+  <template id="temp">
+    <div>
+      <div>
+        <label for="" >评论人：</label>
+        <input type="text"v-model="name">
+      </div>
+
+      <div>
+          <label for="">评论内容：</label>
+         <textarea name="" id="" cols="30" rows="5 " v-model="content"></textarea>
+        </div>
+      <div>
+            <input type="button" value="发表评论" class="btn btn-primary" @click="postComment">
+          </div> 
+    </div>
+  </template>
+  <script>
+    var commentBox={
+      template:'#temp',
+      data(){
+        return{
+          name:'',
+          content:''
+        }
+      },
+      methods:{
+        postComment(){
+         var comment={ id:Date.now(), name:this.name, content:this.content}
+         var list = JSON.parse( localStorage.getItem('cmts')||"[]")
+        list.unshift(comment) 
+        localStorage.setItem('cmts',JSON.stringify(list))
+        this.name= this.content= ""
+        this.$emit('func')
+        }
+      },
+      
+    }
+    var vm = new Vue({
+      el:'#app',
+      data:{
+       
+        list:[
+          {id:Date.now(),name:'李白',content:'千金散尽还复来'},
+          {id:Date.now(),name:'杜甫',content:'李白我的最爱'},
+          {id:Date.now(),name:'马云',content:'我对钱没有兴趣'},
+          {id:Date.now(),name:'王健林',content:'中等意思吧'},
+        ]
+      },
+      created(){
+        this.loadComments()
+      },
+      methods:{
+        loadComments(){
+          var list = JSON.parse( localStorage.getItem('cmts')||"[]")
+          this.list = list
+        }
+      },
+      components:{
+        'com-box':commentBox
+      }
+    })
+  </script>
+</body>
+</html>

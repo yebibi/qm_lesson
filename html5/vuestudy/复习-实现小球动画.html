@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <style>
+    .ball{
+      height: 20px;
+      width:20px;
+      border-radius: 50%;
+      background-color: red;
+    }
+    .v-enter,
+    .v-leave-to{
+      opacity: 0;
+      transform: translate(150px,450px)
+    }
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 0.8s ease
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    
+      <input type="button" value="加入购物车" @click="flag=!flag">
+      <transition >
+          <div class="ball" v-show="flag"></div>
+      </transition>
+    
+  
+  
+  </div>
+  <script>
+    var vm = new Vue({
+      el:"#app",
+      data:{
+        flag:false
+      }
+    })
+  </script>
+</body>
+</html>
