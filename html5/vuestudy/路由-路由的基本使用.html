@@ -1,0 +1,77 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a href="#/login" style="text-decoration:none">登录</a>
+      <a href="#/register"style="text-decoration:none">注册</a>
+     <router-view></router-view>
+    
+    </div>
+    <template id="temp">
+      <div>
+        <h3>登录组件</h3>
+        <label for="">
+          账号：
+          <input type="text">
+        </label>
+        <br>
+        <label for="">
+            密码：
+            <input type="text">
+          </label>
+          <input type="button" value="登录">
+      </div>
+    </template>
+    <template id="temp1">
+        <div>
+          <h3>注册组件</h3>
+          <label for="">
+            账号：
+            <input type="text">
+          </label>
+          <br>
+          <label for="">
+              密码：
+              <input type="text">
+            </label>
+            <input type="button" value="注册">
+        </div>
+      </template>
+    <script>
+      var login ={
+        template:'#temp'
+      }
+      var register={
+        template:'#temp1'
+      }
+      var router = new VueRouter({
+        routes:[
+           {path:'/login',component:login},
+           {path:'/register',component:register}
+        ],
+        
+          
+      
+      })
+      var vm = new Vue({
+        el:'#app',
+        data:{
+           
+        },
+        router:router,
+        components:{
+          login,
+          register
+        }
+      })
+    </script>
+  </body>
+  </html>
