@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <h3>goodlist</h3>
-  </div>
+    <div>shopcart</div>
 </template>
+
 <script>
 export default {
-  
+
 }
 </script>
 
