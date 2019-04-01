@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <mt-button type="primary">primary</mt-button>
    <h1>这是App组件</h1>
    <router-link to="/account">account</router-link>
   <router-link to="/goodlist">goodlist</router-link>
