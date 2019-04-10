@@ -8,9 +8,13 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../src/css/dist/css/mui.css'
 import '../src/css/dist/css/icons-extra.css'
 import VueResource from 'vue-resource'
+import moment from 'moment'
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(MintUI)
+Vue.filter('dataFormat',function(datastr,pattern="YYYY-MM-DD HH:mm:ss"){
+  return moment(datastr).format(pattern)
+})
 Vue.config.productionTip = false
 
 new Vue({

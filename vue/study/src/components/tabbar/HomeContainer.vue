@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style  scoped>
+<style >
 .mint-swipe {
   height: 200px;
 }
