@@ -2,9 +2,9 @@
   <div class="cmt-container">
     <h3>发表评论</h3>
     <hr>
-    <textarea placeholder="请输入评论内容（最多120字）" maxlength="120"></textarea>
+    <textarea placeholder="请输入评论内容（最多120字）" maxlength="120" v-model="msg"></textarea>
   
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
       <div class="cmt-list">
       <div class="cmt-item" v-for="(item,i) in comments" :key="item.add_time">
         <div class="cmt-title" >第{{i+1}}楼&nbsp;&nbsp;用户：{{item.user_name}}&nbsp;&nbsp;发表时间：{{item.add_time | dataFormat}} </div>
@@ -24,6 +24,7 @@ export default {
     return {
       pageindex:1,
       comments:[],
+      msg:""
     }
   },
   created(){
@@ -42,6 +43,19 @@ export default {
     loadingmore(){
       this.pageindex++
       this.getComment()
+    },
+    postComment(){
+      if(this.msg.trim().length === 0){
+        return Toast('评论内容不能为空')
+      }
+      this.$http.post('http://www.liulongbin.top:3005/api/postcomment/'+this.$route.params.id,{content:this.msg.trim()})
+      .then(function(result){
+        if(result.body.stutas === 0){
+          var cmt = {user_name:'匿名用户',add_time:Date.now(),content:this.msg.trim()}
+          this.comments.unshift(cmt)
+          this.msg = ''
+        }
+      })
     }
   },
    props:["id"]

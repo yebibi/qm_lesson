@@ -16,6 +16,7 @@ Vue.filter('dataFormat',function(datastr,pattern="YYYY-MM-DD HH:mm:ss"){
   return moment(datastr).format(pattern)
 })
 Vue.config.productionTip = false
+Vue.http.options.emulateJSON = true
 
 new Vue({
   render: h => h(App),
