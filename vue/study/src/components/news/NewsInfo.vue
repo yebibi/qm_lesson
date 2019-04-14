@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .newsinfo-container {
   padding: 0 4px;
